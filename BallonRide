@@ -1,0 +1,108 @@
+import java.awt.Color;
+
+import acm.graphics.*;
+import acm.program.GraphicsProgram;
+
+public class BalloonRide extends GraphicsProgram{
+	
+	public static final int APPLET_WIDTH = 600;
+	public static final int APPLET_HEIGHT = 300;
+	public GBalloon balloon = new GBalloon(40, 40, Color.red);
+	public static int dx = 3;
+	public static int dy = 3;
+	
+	
+	public void init() {
+		setSize(APPLET_WIDTH, APPLET_HEIGHT);
+		setBackground(Color.CYAN);
+		
+	}
+	
+	
+	
+	public void run() {
+
+		createScene();
+		pause(300);
+		liftOff();
+		pause(300);
+		fly();
+		pause(300);
+		land();
+		
+		
+		
+	}
+	
+
+
+
+	
+
+
+
+	// create the scene
+	public void createScene(){
+		
+		addBalloon();
+		createHill(0);
+		createHill(500);
+	}
+	
+	// create the balloon
+	public void addBalloon() {
+		add(balloon, APPLET_WIDTH/25, 200);
+		
+		
+		
+	}
+	
+	//make the hills
+	public int createHill(int hillLocation){
+		
+		GArc hill = new GArc(0, 0, 100, 50, 0, 180);
+		hill.setFillColor(Color.green);
+		hill.setFilled(true);
+		add(hill, hillLocation, 275);
+		return hillLocation;
+		
+	} // end of createHill
+	
+	// lift the balloon up
+	public void liftOff(){
+		
+		while(balloon.getY() > APPLET_HEIGHT/4) {
+			
+			balloon.move(0, -dy);
+			
+			pause(25);
+		}
+			
+	} // end of liftOff
+	
+	
+	public void fly() {
+		 
+		while (balloon.getX() < 525) {
+			
+			balloon.move(dx, 0);
+
+			pause(25);
+		  }
+
+	}	// end of fly
+	
+	
+	public void land() {
+		
+		while (balloon.getX() <= 300) {
+			balloon.move(0, 3);
+		}
+		
+		pause(25);
+	}
+	
+	
+	
+
+} // end of BallonRide
