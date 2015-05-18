@@ -1,0 +1,73 @@
+import java.awt.Color;
+
+import acm.graphics.*;
+
+
+public class GBalloon extends GCompound{
+
+	private Color mColor = Color.RED;
+	private double horizontal = 30;
+	private double vertical = 30;
+	
+	
+	
+	public GBalloon(int width, int height, Color balloonColor) {
+		mColor = balloonColor;
+		horizontal = width;
+		vertical = height;
+		
+		
+		leftBasketString();
+		rightBasketString();
+		addBalloon();
+		basket();
+		
+		
+	}
+	
+	
+
+	private void basket() {
+		
+		
+	}
+
+
+
+	public void addBalloon() {
+		
+		
+		// make the balloon
+		GOval ballon = new GOval(horizontal, vertical);
+		ballon.setFillColor(mColor);
+		ballon.setFilled(true);
+		add(ballon);
+	}
+
+	private void leftBasketString() {
+
+		// make the strings
+		GLine leftString;
+		leftString = new GLine(0, 0, 10, vertical);
+		leftString.setColor(Color.BLACK);
+		add(leftString, 0, vertical/2);
+		
+	}
+	
+	private void rightBasketString() {
+		
+		// make the strings
+		GLine rightString;
+		rightString = new GLine(0, 0, -10, vertical);
+		rightString.setColor(Color.BLACK);
+		add(rightString, 41, vertical/2);
+				
+	}
+	
+	
+	
+	
+	
+	
+	
+}
